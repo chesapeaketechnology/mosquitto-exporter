@@ -1,9 +1,9 @@
-PKG_NAME:=github.com/sapcc/mosquitto-exporter
+PKG_NAME:=github.com/chesapeaketechnology/mosquitto-exporter
 BUILD_DIR:=bin
 MOSQUITTO_EXPORTER_BINARY:=$(BUILD_DIR)/mosquitto_exporter
-IMAGE := sapcc/mosquitto-exporter
-VERSION=0.6.0
-LDFLAGS=-s -w -X main.Version=$(VERSION) -X main.GITCOMMIT=`git rev-parse --short HEAD`
+IMAGE := chesapeaketechnology/mosquitto-exporter
+VERSION=0.1.0
+LDFLAGS=-s -w -X main.Version=$(VERSION)
 CGO_ENABLED=0
 GOARCH=amd64
 .PHONY: help
@@ -17,7 +17,7 @@ help:
 .PHONY: build
 build:
 	@mkdir -p $(BUILD_DIR)
-	go build -o $(MOSQUITTO_EXPORTER_BINARY) -ldflags="$(LDFLAGS)" $(PKG_NAME)
+	go build -tags netgo -a -v -o $(MOSQUITTO_EXPORTER_BINARY) -ldflags="$(LDFLAGS)" $(PKG_NAME)
 
 linux: export GOOS=linux
 linux: build

@@ -2,12 +2,24 @@ Mosquitto Exporter
 =============================
 Prometheus exporter for the [Mosquitto MQTT message broker](https://mosquitto.org/).
 
-There is a docker image available:
+This repo was forked from https://github.com/sapcc/mosquitto-exporter and modified to grab the mosquitto broker password from Consul. 
+
+The updated image is available from Docker Hub
+```
+docker run \
+  -e BROKER_ENDPOINT=tcp://127.0.0.1:1883 \
+  -e BIND_ADDRESS=0.0.0.0:9234 \
+  -e MQTT_USER=username
+  -p 9234:9234 chesapeaketechnology/mosquitto-exporter
+```
+
+The original docker image is also available from Docker Hub
 ```
 docker run \
   -e BROKER_ENDPOINT=tcp://mosquitto:1883 \
   -p 9234:9234 sapcc/mosquitto-exporter
 ```
+
 
 Usage:
 ======
