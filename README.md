@@ -2,14 +2,14 @@ Mosquitto Exporter
 =============================
 Prometheus exporter for the [Mosquitto MQTT message broker](https://mosquitto.org/).
 
-This repo was forked from https://github.com/sapcc/mosquitto-exporter and modified to grab the mosquitto broker password from Consul. 
+This repo was forked from https://github.com/sapcc/mosquitto-exporter and modified to grab the mosquitto broker password from Consul. The password is expected to be stored in Consul's Key Value Store at `mqtt/user/<username>` path.
 
 The updated image is available from Docker Hub
 ```
 docker run \
   -e BROKER_ENDPOINT=tcp://127.0.0.1:1883 \
   -e BIND_ADDRESS=0.0.0.0:9234 \
-  -e MQTT_USER=username
+  -e MQTT_USER=<username>
   -p 9234:9234 chesapeaketechnology/mosquitto-exporter
 ```
 
