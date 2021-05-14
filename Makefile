@@ -2,7 +2,7 @@ PKG_NAME:=github.com/chesapeaketechnology/mosquitto-exporter
 BUILD_DIR:=bin
 MOSQUITTO_EXPORTER_BINARY:=$(BUILD_DIR)/mosquitto_exporter
 IMAGE := chesapeaketechnology/mosquitto-exporter
-VERSION=0.1.0
+VERSION=0.2.0
 LDFLAGS=-s -w -X main.Version=$(VERSION)
 CGO_ENABLED=0
 GOARCH=amd64
